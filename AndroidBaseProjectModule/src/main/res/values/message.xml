@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Permission -->
+    <string name="error_permission_not_granted">Permission is not granted</string>
+
+</resources>
