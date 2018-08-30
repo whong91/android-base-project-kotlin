@@ -4,5 +4,7 @@ import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragmentView
 
 interface SecondChildFragmentView : BaseFragmentView {
 
+    var string : String
+
 
 }

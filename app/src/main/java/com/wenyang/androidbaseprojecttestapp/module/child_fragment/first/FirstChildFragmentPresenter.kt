@@ -1,5 +1,6 @@
 package com.wenyang.androidbaseprojecttestapp.module.child_fragment.first
 
+import android.os.Bundle
 import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragmentPresenter
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerChildFragment
 import javax.inject.Inject
@@ -9,4 +10,9 @@ class FirstChildFragmentPresenter @Inject constructor(view : FirstChildFragmentV
     : BaseFragmentPresenter<FirstChildFragmentView>(view){
 
 
+    override fun onStart(savedInstanceState: Bundle?) {
+        super.onStart(savedInstanceState)
+
+
+    }
 }

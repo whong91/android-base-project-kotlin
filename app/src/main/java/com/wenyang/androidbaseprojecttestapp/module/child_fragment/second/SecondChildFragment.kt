@@ -11,6 +11,8 @@ import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragment
 import com.wenyang.androidbaseprojecttestapp.R
 
 class SecondChildFragment : BaseFragment<SecondChildFragmentView, SecondChildFragmentPresenter>(), SecondChildFragmentView{
+    override var string: String = ""
+
     override fun getLayoutId(): Int = R.layout.fragment_second_child
 
 

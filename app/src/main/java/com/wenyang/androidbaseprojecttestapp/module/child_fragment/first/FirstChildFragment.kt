@@ -11,7 +11,11 @@ import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragment
 import com.wenyang.androidbaseprojecttestapp.R
 
 class FirstChildFragment : BaseFragment<FirstChildFragmentView, FirstChildFragmentPresenter>(), FirstChildFragmentView {
+    override var string: String = ""
+
     override fun getLayoutId(): Int = R.layout.fragment_first_child
+
+
 
 
 }

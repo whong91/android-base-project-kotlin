@@ -1,6 +1,11 @@
 package com.wenyang.androidbaseprojectmodule.dagger.module
 
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import com.wenyang.androidbaseprojectmodule.dagger.scope.PerFragment
 import dagger.Module
+import dagger.Provides
+import javax.inject.Named
 
 @Module
 abstract class BaseFragmentModule {
@@ -23,12 +28,12 @@ abstract class BaseFragmentModule {
          * This is a valid way to declare static provides methods.
          * See https://github.com/google/dagger/issues/900#issuecomment-337043187
          */
-//        @JvmStatic
-//        @Provides
-//        @Named(CHILD_FRAGMENT_MANAGER)
-//        @PerFragment
-//        fun childFragmentManager(@Named(FRAGMENT) fragment: Fragment): FragmentManager =
-//                fragment.childFragmentManager
+        @JvmStatic
+        @Provides
+        @Named(CHILD_FRAGMENT_MANAGER)
+        @PerFragment
+        fun childFragmentManager(@Named(FRAGMENT) fragment: Fragment): FragmentManager =
+                fragment.childFragmentManager
     }
 
 }
