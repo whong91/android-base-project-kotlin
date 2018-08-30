@@ -24,4 +24,6 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [MainFragmentModule::class])
     @PerFragment
     abstract fun mainFragment(): MainFragment
+
+
 }
