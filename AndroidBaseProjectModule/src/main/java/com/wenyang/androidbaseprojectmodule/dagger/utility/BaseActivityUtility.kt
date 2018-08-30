@@ -2,7 +2,9 @@ package com.wenyang.androidbaseprojectmodule.dagger.utility
 
 import android.content.ActivityNotFoundException
 import android.os.Handler
+import android.support.annotation.IdRes
 import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.widget.Toast
@@ -134,6 +136,15 @@ abstract class BaseActivityUtility constructor(private val activity: AppCompatAc
                     }
 
                 }).check()
+    }
+
+
+    fun showFragment(@IdRes containerViewId: Int, fragment: Fragment) {
+        activity.supportFragmentManager
+                .beginTransaction()
+                .replace(containerViewId, fragment)
+                .disallowAddToBackStack()
+                .commitAllowingStateLoss()
     }
 
     interface PermissionCallback {
