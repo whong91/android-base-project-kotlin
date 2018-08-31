@@ -7,4 +7,5 @@ interface SecondChildFragmentView : BaseFragmentView {
     var string : String
 
 
+    fun setText(string : String)
 }

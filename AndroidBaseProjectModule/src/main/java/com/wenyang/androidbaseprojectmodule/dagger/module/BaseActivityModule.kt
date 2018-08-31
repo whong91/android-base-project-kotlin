@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerActivity
 import dagger.Binds
 import dagger.Module
@@ -20,12 +21,19 @@ abstract class BaseActivityModule {
 
         const val CONTEXT = "BaseActivityModule.Context"
 
+        const val LINEAR_LAYOUT_MANAGER_VIEW_STATE = "BaseActivityModule.LinearLayoutManagerViewState"
+
         @JvmStatic
         @Provides
         @Named(ACTIVITY_FRAGMENT_MANAGER)
         @PerActivity
         fun activityFragmentManager(activity: AppCompatActivity): FragmentManager =
                 activity.supportFragmentManager
+
+        @JvmStatic
+        @Provides
+        fun linearLayoutManager(activity: AppCompatActivity) : LinearLayoutManager =
+                LinearLayoutManager(activity)
     }
 
     @Binds

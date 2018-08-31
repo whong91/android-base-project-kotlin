@@ -12,8 +12,12 @@ import javax.inject.Inject
  *
  */
 class MainFragment : BaseFragment<MainFragmentView, MainFragmentPresenter>(), MainFragmentView {
+    @Inject
+    override lateinit var momentViewPagerAdapter: MomentViewPagerAdapter
+
+
     override fun setupTabViewPager() {
-        viewpager_mainfragment.adapter = mainFragmentAdapter
+        viewpager_mainfragment.adapter = momentViewPagerAdapter
 
         tablayout_mainfragment.setupWithViewPager(viewpager_mainfragment)
     }

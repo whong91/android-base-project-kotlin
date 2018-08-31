@@ -16,17 +16,14 @@ class MainFragmentPresenter @Inject constructor(view: MainFragmentView) : BaseFr
 
         view.setupTabViewPager()
 
-        view.mainFragmentAdapter.addFragment(FirstChildFragment(),"hey")
-        view.mainFragmentAdapter.addFragment(SecondChildFragment(),"yo")
-//        override fun setupTabViewPager() {
-//            viewpager_moment.adapter = momentViewPagerAdapter
-//
-//            tablayout_moment.setupWithViewPager(viewpager_moment)
-//        }
-//
-//        override fun addToMomentViewPagerAdapter(aggregateViewModel: AggregateViewModel, callback: MomentFragmentCallback?) {
-//            momentViewPagerAdapter.addChildFragment(aggregateViewModel, callback)
-//            momentViewPagerAdapter.notifyDataSetChanged()
-//        }
+        view.momentViewPagerAdapter.addFragment(FirstChildFragment(),"hey")
+        view.momentViewPagerAdapter.addFragment(SecondChildFragment(),"yo")
+        view.momentViewPagerAdapter.addFragment(FirstChildFragment(),"hey")
+        view.momentViewPagerAdapter.addFragment(SecondChildFragment(),"yo")
+        view.momentViewPagerAdapter.addFragment(FirstChildFragment(),"hey")
+        view.momentViewPagerAdapter.addFragment(SecondChildFragment(),"yo")
+        view.momentViewPagerAdapter.addFragment(FirstChildFragment(),"hey")
+        view.momentViewPagerAdapter.addFragment(SecondChildFragment(),"yo")
+
     }
 }
