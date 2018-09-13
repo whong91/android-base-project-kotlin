@@ -6,7 +6,6 @@ import android.util.Log
 import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragmentPresenter
 import com.wenyang.androidbaseprojectmodule.dagger.module.BaseActivityModule
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerChildFragment
-import com.wenyang.androidbaseprojectmodule.utility.extension.log
 import javax.inject.Inject
 
 @PerChildFragment
