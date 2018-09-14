@@ -19,7 +19,7 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
 
     override fun getItemViewType(position: Int): Int = mAdapterItems[position].type.int
 
-    fun add(item: O) {
+    open fun add(item: O) {
 
         val adapterItem = AdapterObjectItem(item)
 
@@ -39,7 +39,7 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
         notifyDataSetChanged()
     }
 
-    fun add(items: List<O>) {
+    open fun add(items: List<O>) {
 
         items.mapTo(mAdapterItems) { AdapterObjectItem(it) }
         items.mapTo(mBackupAdapterItems) { AdapterObjectItem(it) }
@@ -130,6 +130,12 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
         clear()
 
         add(items)
+    }
+
+    fun clearItems(){
+
+        mAdapterItems.clear()
+        notifyDataSetChanged()
     }
 
     interface Callback<in O> {
