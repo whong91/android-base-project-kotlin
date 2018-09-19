@@ -73,13 +73,4 @@ abstract class BaseActivity<out V : BaseView, P : BasePresenter<V>> : AppCompatA
         presenter.onActivityResult(requestCode, resultCode, data)
     }
 
-
-    override fun showFragment(@IdRes containerViewId: Int, fragment: Fragment) {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(containerViewId, fragment)
-                .disallowAddToBackStack()
-                .commitAllowingStateLoss()
-    }
-
 }

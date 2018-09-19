@@ -8,8 +8,8 @@ import com.wenyang.androidbaseprojecttestapp.module.fragment.main.MainFragment
 import kotlinx.android.synthetic.main.activity_main.view.*
 import javax.inject.Inject
 
-class MainActivityPresenter @Inject constructor(view: MainActivityView, perActivityUtility: PerActivityUtility)
-    : BaseActivityPresenter<MainActivityView>(view, perActivityUtility){
+class MainActivityPresenter @Inject constructor(view: MainActivityView, val perActivityUtility: PerActivityUtility)
+    : BaseActivityPresenter<MainActivityView>(view){
 
 
     override fun onStart(savedInstanceState: Bundle?) {
