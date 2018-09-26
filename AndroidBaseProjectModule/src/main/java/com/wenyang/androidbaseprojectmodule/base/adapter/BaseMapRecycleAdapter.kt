@@ -8,20 +8,20 @@ import android.support.v7.widget.RecyclerView
  */
 
 
-abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
+abstract class BaseMapRecycleAdapter<in O : Any, V : RecyclerView.ViewHolder>(
         val context: Context
 ) : RecyclerView.Adapter<V>() {
 
-    var mAdapterItems = ArrayList<AdapterItem>()
-    var mBackupAdapterItems = ArrayList<AdapterItem>()
+    var mAdapterItems = ArrayList<AdapterItem<Any>>()
+    var mBackupAdapterItems = ArrayList<AdapterItem<Any>>()
 
     override fun getItemCount(): Int = mAdapterItems.size
 
-    override fun getItemViewType(position: Int): Int = mAdapterItems[position].type.int
+    override fun getItemViewType(position: Int): Int = get(position).type.int
 
     open fun add(item: O) {
 
-        val adapterItem = AdapterObjectItem(item)
+        val adapterItem = AdapterItem(item, AdapterItemType.ITEM)
 
         mAdapterItems.add(adapterItem)
         mBackupAdapterItems.add(adapterItem)
@@ -29,20 +29,28 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
         notifyDataSetChanged()
     }
 
-    fun add(type: AdapterItemType) {
+    fun add(item : Any , type : AdapterItemType){
 
-        val adapterItem = AdapterItem(type)
+        val adapterItem = AdapterItem(item, type)
 
         mAdapterItems.add(adapterItem)
         mBackupAdapterItems.add(adapterItem)
+
+        notifyDataSetChanged()
+    }
+
+    open fun add(items : List<Any> , type : AdapterItemType ){
+
+        items.mapTo(mAdapterItems) { AdapterItem(it, type) }
+        items.mapTo(mBackupAdapterItems) { AdapterItem(it, type)  }
 
         notifyDataSetChanged()
     }
 
     open fun add(items: List<O>) {
 
-        items.mapTo(mAdapterItems) { AdapterObjectItem(it) }
-        items.mapTo(mBackupAdapterItems) { AdapterObjectItem(it) }
+        items.mapTo(mAdapterItems) { AdapterItem(it, AdapterItemType.ITEM) }
+        items.mapTo(mBackupAdapterItems) { AdapterItem(it, AdapterItemType.ITEM)  }
 
         notifyDataSetChanged()
     }
@@ -89,33 +97,17 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
         notifyDataSetChanged()
     }
 
-    fun getItem(position: Int): Any? {
+    // Get item inside the adapter
+    fun getItem(position: Int) : Any = get(position).item
 
-        val adapterItem = get(position)
+    // Get AdapterItem
+    fun get(position: Int) = mAdapterItems[position]
 
-        if (adapterItem is AdapterObjectItem<*>) {
+    fun get(type : AdapterItemType) = getAll().filter { it.type == type }
 
-            return adapterItem.item
-        }
-
-        return null
-    }
-
-    fun getItems() = mAdapterItems.mapNotNull {
-        it as? AdapterObjectItem<O>
-    }
+    fun getItems() = get(AdapterItemType.ITEM)
 
     fun getSelectedAdapterItems() = getAll().filter { it.selected }
-
-    fun getSelectedItems() =
-            mAdapterItems.filter {
-                it.selected
-            }.mapNotNull {
-                it as? AdapterObjectItem<O>
-            }
-
-
-    fun get(position: Int): AdapterItem = mAdapterItems[position]
 
     fun getAll() = mAdapterItems
 
@@ -144,9 +136,9 @@ abstract class BaseMapRecycleAdapter<O, V : RecyclerView.ViewHolder>(
 
 }
 
-open class AdapterItem(val type: AdapterItemType, var selected: Boolean = false)
-
-data class AdapterObjectItem<out O>(val item: O) : AdapterItem(AdapterItemType.ITEM)
+open class AdapterItem<out P>(val item : P,
+                              val type: AdapterItemType,
+                              var selected: Boolean = false)
 
 enum class AdapterItemType constructor(val int: Int) {
 

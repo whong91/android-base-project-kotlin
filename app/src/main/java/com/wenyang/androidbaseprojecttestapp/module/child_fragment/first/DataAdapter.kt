@@ -21,7 +21,7 @@ class DataAdapter @Inject constructor(context : Context) : BaseMapRecycleAdapter
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
 
-        val data = getItem(position) ?: return
+        val data = getItem(position)
 
         if(data is String){
 
