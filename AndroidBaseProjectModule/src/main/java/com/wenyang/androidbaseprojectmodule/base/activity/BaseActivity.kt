@@ -6,6 +6,7 @@ import android.support.annotation.IdRes
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.wenyang.androidbaseprojectmodule.base.BasePresenter
 import com.wenyang.androidbaseprojectmodule.base.BaseView
 import dagger.android.AndroidInjection
@@ -71,6 +72,12 @@ abstract class BaseActivity<out V : BaseView, P : BasePresenter<V>> : AppCompatA
         super.onActivityResult(requestCode, resultCode, data)
 
         presenter.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        super.onOptionsItemSelected(item)
+        return presenter.onOptionsItemSelected(item)
     }
 
 }

@@ -18,6 +18,7 @@ package com.wenyang.androidbaseprojectmodule.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 
 /**
  * A presenter that defines its own lifecycle methods.
@@ -60,4 +61,6 @@ interface Presenter {
     fun onEnd() = Unit
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) = Unit
+
+    fun onOptionsItemSelected(item: MenuItem?): Boolean = false
 }
