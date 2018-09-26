@@ -1,11 +1,13 @@
 package com.wenyang.androidbaseprojectmodule.base.dialog_fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.wenyang.androidbaseprojectmodule.base.BasePresenter
@@ -82,6 +84,16 @@ abstract class BaseDialogFragment<out V : BaseView, P : BasePresenter<V>>  : Dia
     override fun onDestroyView() {
         presenter?.onEnd()
         super.onDestroyView()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        presenter?.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return presenter?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item)
     }
 
     override fun dismissDialogFragment() {

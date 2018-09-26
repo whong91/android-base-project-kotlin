@@ -67,13 +67,11 @@ abstract class BaseActivity<out V : BaseView, P : BasePresenter<V>> : AppCompatA
         super.onDestroy()
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         presenter.onActivityResult(requestCode, resultCode, data)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         super.onOptionsItemSelected(item)
