@@ -66,35 +66,35 @@ abstract class BaseDialogHandler constructor(val context: Context) {
     }
 
     fun launch(title: String,
-               message: String,
-               positiveButtonText: String,
-               negativeButtonText: String? = null,
-               callback: DialogHandlerCallback) {
+        message: String,
+        positiveButtonText: String,
+        negativeButtonText: String? = null,
+        callback: DialogHandlerCallback) {
 
-        val dialogBuilder = AlertDialog.Builder(context)
+            val dialogBuilder = AlertDialog.Builder(context)
 
-        dialogBuilder.setTitle(title)
-        dialogBuilder.setMessage(message)
-        dialogBuilder.setPositiveButton(positiveButtonText) { dialog, which ->
-
-            dialog.dismiss()
-
-            callback.onPositiveButtonClick()
-        }
-
-        if (negativeButtonText != null) {
-            dialogBuilder.setNegativeButton(negativeButtonText) { dialog, which ->
+            dialogBuilder.setTitle(title)
+            dialogBuilder.setMessage(message)
+            dialogBuilder.setPositiveButton(positiveButtonText) { dialog, which ->
 
                 dialog.dismiss()
 
-                callback.onNegativeButtonClick()
+                callback.onPositiveButtonClick()
             }
-        }
 
-        dialogBuilder.setIcon(android.R.drawable.ic_dialog_info)
-        dialogBuilder.setCancelable(false)
+            if (negativeButtonText != null) {
+                dialogBuilder.setNegativeButton(negativeButtonText) { dialog, which ->
 
-        dialogBuilder.create().show()
+                    dialog.dismiss()
+
+                    callback.onNegativeButtonClick()
+                }
+            }
+
+            dialogBuilder.setIcon(android.R.drawable.ic_dialog_info)
+            dialogBuilder.setCancelable(false)
+
+            dialogBuilder.create().show()
     }
 
     fun launchWithEditText(titleResId: Int,

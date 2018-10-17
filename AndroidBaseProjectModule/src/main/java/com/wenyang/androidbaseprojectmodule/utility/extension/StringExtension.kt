@@ -57,7 +57,7 @@ fun String.checkBlank() : Int?{
 
 fun String.isValidPassword(): Int?{
 
-    if (this.isBlank()) return R.string.error_loginid_empty_field
+    if (this.isBlank()) return R.string.error_password_empty_field
 
     if (this.length < 8 ) return R.string.error_password_invalid
 

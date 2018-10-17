@@ -7,7 +7,8 @@
 
 
     <!-- Credential -->
-    <string name="error_loginid_empty_field">Both login ID and Password are required.</string>
+    <string name="error_loginid_empty_field">Login ID is required.</string>
+    <string name="error_password_empty_field">Password field is required.</string>
     <string name="error_password_not_match">New password does not match.</string>
     <string name="error_password_invalid">Password must contain at least 8 alphanumeric characters.</string>
 
