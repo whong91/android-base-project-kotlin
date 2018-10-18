@@ -1,9 +1,11 @@
 package com.wenyang.androidbaseprojectmodule.utility.helper
 
+import android.app.Activity
 import android.content.Context
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import com.wenyang.androidbaseprojectmodule.R
+import com.wenyang.androidbaseprojectmodule.utility.extension.logcat
 import kotlinx.android.synthetic.main.dialog_edit_text.view.*
 
 /**
@@ -37,8 +39,8 @@ abstract class BaseDialogHandler constructor(val context: Context) {
     }
 
     fun launchWithSingleButton(titleResId: Int,
-                            messageResId: Int,
-                            callback: DialogHandlerCallback) {
+                               messageResId: Int,
+                               callback: DialogHandlerCallback) {
         val title = context.getString(titleResId)
         val message = context.getString(messageResId)
         val positiveButtonText = context.getString(R.string.action_ok)
@@ -66,35 +68,37 @@ abstract class BaseDialogHandler constructor(val context: Context) {
     }
 
     fun launch(title: String,
-        message: String,
-        positiveButtonText: String,
-        negativeButtonText: String? = null,
-        callback: DialogHandlerCallback) {
+               message: String,
+               positiveButtonText: String,
+               negativeButtonText: String? = null,
+               callback: DialogHandlerCallback) {
 
-            val dialogBuilder = AlertDialog.Builder(context)
+        val dialogBuilder = AlertDialog.Builder(context)
 
-            dialogBuilder.setTitle(title)
-            dialogBuilder.setMessage(message)
-            dialogBuilder.setPositiveButton(positiveButtonText) { dialog, which ->
+        dialogBuilder.setTitle(title)
+        dialogBuilder.setMessage(message)
+        dialogBuilder.setPositiveButton(positiveButtonText) { dialog, which ->
+
+            dialog.dismiss()
+
+            callback.onPositiveButtonClick()
+        }
+
+        if (negativeButtonText != null) {
+            dialogBuilder.setNegativeButton(negativeButtonText) { dialog, which ->
 
                 dialog.dismiss()
 
-                callback.onPositiveButtonClick()
+                callback.onNegativeButtonClick()
             }
+        }
 
-            if (negativeButtonText != null) {
-                dialogBuilder.setNegativeButton(negativeButtonText) { dialog, which ->
+        dialogBuilder.setIcon(android.R.drawable.ic_dialog_info)
+        dialogBuilder.setCancelable(false)
 
-                    dialog.dismiss()
+        val dialog = dialogBuilder.create()
 
-                    callback.onNegativeButtonClick()
-                }
-            }
-
-            dialogBuilder.setIcon(android.R.drawable.ic_dialog_info)
-            dialogBuilder.setCancelable(false)
-
-            dialogBuilder.create().show()
+        show(dialog)
     }
 
     fun launchWithEditText(titleResId: Int,
@@ -145,7 +149,16 @@ abstract class BaseDialogHandler constructor(val context: Context) {
         dialogBuilder.setIcon(android.R.drawable.ic_dialog_info)
         dialogBuilder.setCancelable(false)
 
-        dialogBuilder.create().show()
+        val dialog = dialogBuilder.create()
+
+        show(dialog)
+    }
+
+    fun show(alertDialog: AlertDialog) {
+
+        if ((context as? Activity)?.isFinishing == true) return
+
+        alertDialog.show()
     }
 
 }
