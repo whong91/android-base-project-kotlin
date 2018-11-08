@@ -140,6 +140,11 @@ abstract class BaseActivityUtility constructor(private val activity: AppCompatAc
 
 
     fun showFragment(@IdRes containerViewId: Int, fragment: Fragment) {
+
+        if(activity.isFinishing){
+            return
+        }
+
         activity.supportFragmentManager
                 .beginTransaction()
                 .replace(containerViewId, fragment)
