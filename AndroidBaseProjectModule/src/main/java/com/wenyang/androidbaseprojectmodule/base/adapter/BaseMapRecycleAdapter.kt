@@ -55,6 +55,12 @@ abstract class BaseMapRecycleAdapter<in O : Any, V : RecyclerView.ViewHolder>(
         notifyDataSetChanged()
     }
 
+    fun removeAt(position: Int){
+        mAdapterItems.removeAt(position)
+        mBackupAdapterItems.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     fun isSelected(position: Int) = get(position).selected
 
     fun setSelected(position: Int) {
