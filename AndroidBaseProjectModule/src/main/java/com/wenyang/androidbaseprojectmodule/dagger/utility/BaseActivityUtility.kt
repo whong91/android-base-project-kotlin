@@ -85,6 +85,11 @@ abstract class BaseActivityUtility constructor(private val activity: AppCompatAc
     fun getStringResourceArrayList(arrayResId: Int) = activity.resources.getStringArray(arrayResId).toList()
 
     fun showDialogFragment(dialogFragment: DialogFragment) {
+
+        if(activity.isFinishing){
+            return
+        }
+
         val fragmentTransaction = activity.supportFragmentManager.beginTransaction()
 
         dialogFragment.show(fragmentTransaction, dialogFragment.toString())
