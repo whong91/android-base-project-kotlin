@@ -67,6 +67,21 @@ abstract class BaseDialogHandler constructor(val context: Context) {
                 callback = callback)
     }
 
+    fun launchWithDoubleButton(titleResId: Int,
+                               message: String,
+                               callback: DialogHandlerCallback) {
+
+        val title = context.getString(titleResId)
+        val positiveButtonText = context.getString(R.string.action_ok)
+        val negativeButtonText = context.getString(R.string.action_cancel)
+
+        launch(title = title,
+                message = message,
+                positiveButtonText = positiveButtonText,
+                negativeButtonText = negativeButtonText,
+                callback = callback)
+    }
+
     fun launch(title: String,
                message: String,
                positiveButtonText: String,
