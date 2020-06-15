@@ -5,15 +5,15 @@ import android.app.Application
 import com.wenyang.androidbaseprojecttestapp.dagger.component.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 
-class TestApplication : Application(), HasActivityInjector {
+class TestApplication : Application(), HasAndroidInjector {
 
 
     @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+    lateinit var activityInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -27,6 +27,6 @@ class TestApplication : Application(), HasActivityInjector {
         DaggerApplicationComponent.builder().create(this).inject(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> = activityInjector
+    override fun androidInjector(): AndroidInjector<Any> =  activityInjector
 
 }

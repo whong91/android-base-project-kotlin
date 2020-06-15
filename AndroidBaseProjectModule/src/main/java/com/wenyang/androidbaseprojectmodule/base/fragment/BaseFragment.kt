@@ -13,12 +13,12 @@ import com.wenyang.androidbaseprojectmodule.base.BasePresenter
 import com.wenyang.androidbaseprojectmodule.base.BaseView
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 
-abstract class BaseFragment<out V : BaseView, P : BasePresenter<V>>  : Fragment(), HasSupportFragmentInjector{
+abstract class BaseFragment<out V : BaseView, P : BasePresenter<V>>  : Fragment(), HasAndroidInjector{
 
     //making it optional instead of lateinit to allow pass setup data even the fragment is not created yet
     @JvmField
@@ -28,10 +28,13 @@ abstract class BaseFragment<out V : BaseView, P : BasePresenter<V>>  : Fragment(
     @Inject
     lateinit var activityContext : Context
 
-    @Inject
-    lateinit var childFragmentInjector : DispatchingAndroidInjector<Fragment>
+    @Inject lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = childFragmentInjector
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+//    @Inject
+//    lateinit var childFragmentInjector : DispatchingAndroidInjector<Fragment>
+//
+//    override fun supportFragmentInjector(): AndroidInjector<Fragment> = childFragmentInjector
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -52,7 +55,7 @@ abstract class BaseFragment<out V : BaseView, P : BasePresenter<V>>  : Fragment(
         retainInstance = true
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
 
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
@@ -91,7 +94,7 @@ abstract class BaseFragment<out V : BaseView, P : BasePresenter<V>>  : Fragment(
         presenter?.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return presenter?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item)
     }
 }
