@@ -1,7 +1,7 @@
 package com.wenyang.androidbaseprojectmodule.dagger.module
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerFragment
 import dagger.Module
 import dagger.Provides

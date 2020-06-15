@@ -55,7 +55,7 @@ class DecryptionHelper @Inject constructor() {
 
         val tempFileName = "temp_$filename"
 
-        var filePath = fileUri.path.substringBeforeLast("/")
+        var filePath = fileUri.path?.substringBeforeLast("/") ?: ""
         filePath = "$filePath/$tempFileName"
 
         val tempFile = File(filePath)

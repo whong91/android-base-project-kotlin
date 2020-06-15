@@ -1,7 +1,7 @@
 package com.wenyang.androidbaseprojecttestapp.module.fragment.main
 
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragment
 import com.wenyang.androidbaseprojecttestapp.R
 import kotlinx.android.synthetic.main.fragment_main.*

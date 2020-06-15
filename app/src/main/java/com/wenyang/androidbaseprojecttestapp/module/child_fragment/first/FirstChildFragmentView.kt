@@ -1,6 +1,6 @@
 package com.wenyang.androidbaseprojecttestapp.module.child_fragment.first
 
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wenyang.androidbaseprojectmodule.base.fragment.BaseFragmentView
 
 interface FirstChildFragmentView : BaseFragmentView {

@@ -2,10 +2,10 @@ package com.wenyang.androidbaseprojectmodule.dagger.utility
 
 import android.content.ActivityNotFoundException
 import android.os.Handler
-import android.support.annotation.IdRes
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.IdRes
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import android.view.WindowManager
 import android.widget.Toast
 import com.karumi.dexter.Dexter

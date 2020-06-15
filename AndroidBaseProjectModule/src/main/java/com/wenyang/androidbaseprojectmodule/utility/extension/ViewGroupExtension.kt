@@ -1,7 +1,7 @@
 package com.wenyang.androidbaseprojectmodule.utility.extension
 
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 /**
  * Created by wenyang on 15/11/17.
@@ -10,7 +10,8 @@ import android.support.design.widget.TextInputLayout
 
 fun TextInputEditText.showErrorInLayout(stringResId: Int?){
 
-    val textInputLayout = this.parent.parent as? TextInputLayout ?: return
+    val textInputLayout = this.parent.parent as? TextInputLayout
+            ?: return
 
     if(stringResId == null) {
         textInputLayout.isErrorEnabled = false

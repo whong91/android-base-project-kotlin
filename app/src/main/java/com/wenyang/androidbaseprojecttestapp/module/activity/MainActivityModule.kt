@@ -1,6 +1,6 @@
 package com.wenyang.androidbaseprojecttestapp.module.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.wenyang.androidbaseprojectmodule.dagger.module.BaseActivityModule
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerActivity
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerFragment

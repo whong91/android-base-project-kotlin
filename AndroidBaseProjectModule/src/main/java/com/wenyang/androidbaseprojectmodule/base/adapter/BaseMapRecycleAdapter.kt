@@ -1,7 +1,7 @@
 package com.wenyang.androidbaseprojectmodule.base.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by wenyang on 19/9/17.

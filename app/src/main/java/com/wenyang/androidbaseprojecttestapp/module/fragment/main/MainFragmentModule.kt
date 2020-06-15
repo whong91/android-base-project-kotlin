@@ -1,6 +1,6 @@
 package com.wenyang.androidbaseprojecttestapp.module.fragment.main
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.wenyang.androidbaseprojectmodule.dagger.module.BaseFragmentModule
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerChildFragment
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerFragment

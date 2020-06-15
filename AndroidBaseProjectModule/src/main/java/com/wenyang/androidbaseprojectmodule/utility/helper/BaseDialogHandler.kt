@@ -2,7 +2,7 @@ package com.wenyang.androidbaseprojectmodule.utility.helper
 
 import android.app.Activity
 import android.content.Context
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import com.wenyang.androidbaseprojectmodule.R
 import com.wenyang.androidbaseprojectmodule.utility.extension.logcat

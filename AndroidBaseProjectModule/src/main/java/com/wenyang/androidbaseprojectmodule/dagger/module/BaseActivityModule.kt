@@ -2,9 +2,9 @@ package com.wenyang.androidbaseprojectmodule.dagger.module
 
 import android.app.Activity
 import android.content.Context
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerActivity
 import dagger.Binds
 import dagger.Module

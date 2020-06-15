@@ -1,6 +1,6 @@
 package com.wenyang.androidbaseprojecttestapp.dagger.utility
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.wenyang.androidbaseprojectmodule.dagger.scope.PerActivity
 import com.wenyang.androidbaseprojectmodule.dagger.utility.BaseActivityUtility
 import com.wenyang.androidbaseprojectmodule.utility.helper.ProgressBarHandler
