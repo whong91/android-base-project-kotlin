@@ -71,7 +71,7 @@ abstract class BaseActivity<out V : BaseView, P : BasePresenter<V>> : AppCompatA
         presenter.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
         return presenter.onOptionsItemSelected(item)
     }
