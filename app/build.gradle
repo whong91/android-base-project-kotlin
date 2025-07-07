@@ -45,5 +45,4 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$googleDaggerVersion"
     implementation "com.google.dagger:dagger-android-support:$googleDaggerVersion"
 
-    compileOnly 'com.github.pengrad:jdk9-deps:1.0'
 }
