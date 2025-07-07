@@ -10,11 +10,11 @@ apply plugin: 'maven-publish'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -31,6 +31,21 @@ android {
 
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.whong91'
+                artifactId = 'android-base-project-kotlin'
+                version = '1.0.0'
+            }
+        }
+    }
+}
+
+
 dependencies {
 
     // java
@@ -43,7 +58,7 @@ dependencies {
     def androidEspressoVersion = '3.0.2'
 
     // google
-    def googleDaggerVersion = '2.27'
+    def googleDaggerVersion = '2.35.1'
 
     // square
     def squareOkHttpVersion = '3.8.0'
@@ -87,6 +102,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$squareRetrofit2Version"
     implementation "com.squareup.retrofit2:converter-moshi:$squareRetrofit2Version"
 
+    compileOnly 'com.github.pengrad:jdk9-deps:1.0'
 
 }
 repositories {
