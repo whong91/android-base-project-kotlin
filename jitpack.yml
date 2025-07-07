@@ -1,0 +1,8 @@
+jdk:
+  - openjdk11
+
+before_install:
+  - echo "Starting JitPack Build with more debug info"
+
+install:
+  - ./gradlew clean build --stacktrace --info
