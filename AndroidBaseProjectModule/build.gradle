@@ -58,11 +58,11 @@ dependencies {
     def androidEspressoVersion = '3.0.2'
 
     // google
-    def googleDaggerVersion = '2.35.1'
+    def googleDaggerVersion = '2.40.3'
 
     // square
     def squareOkHttpVersion = '3.8.0'
-    def squareRetrofit2Version = '2.3.0'
+    def squareRetrofit2Version = '2.9.0'
     def squarePicassoVersion = '2.5.2'
     def squareOkHttp3DownloaderVersion = '1.1.0'
     def squareLeakCanaryVersion = '1.5.4'
