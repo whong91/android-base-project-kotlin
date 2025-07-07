@@ -1,6 +1,0 @@
-jdk:
-  - openjdk11
-
-# Optional: explicitly set gradle version to match your wrapper
-gradle:
-  wrapper: true
